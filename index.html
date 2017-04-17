@@ -98,10 +98,10 @@
         <section>
           <h3>Working with Version Control</h3>
           <img src="images/with-vc.png" alt="Successfully making a grocery list with 5 people and version control" />
-          <p>Rainbows and bunny rabbits!</h3>
+          <p>The Beauty!</h3>
         </section>
         <section>
-          <h3>What should I use version control for?</h3>
+          <h3>What should I version control?</h3>
           <h4>Anything. But not everything.</h4>
           <img src="images/allthethings.jpg" / alt="version control ALL THE THINGS!" style="margin-top: 50px;">
         </section>
@@ -110,12 +110,11 @@
           <p>You decide what goes into version control.</p>
           <p class="fragment">You can, and should, leave some things out.</p>
           <p class="fragment green">libraries, .dotfiles, api keys...</p>
-          <p class="fragment">Git shows you an easy way to do this: <a href="https://help.github.com/articles/ignoring-files/">.gitignore</a></p>
         </section>
         <section>
           <h3>You already manage versions of your work!</h3>
-          <p> Do you have files somewhere that look like this?</p>
-          <pre><code>
+
+          <pre class="fragment"><code>
 Resume-September2013.docx
 Resume-for-Duke-job.docx
 ResumeOLD.docx
@@ -161,13 +160,11 @@ ResumeREALLYREALLYNEW.docx
         </section>
         <section>
           <h3>Why Use Git?</h3>
-
           <ul>
-            <li class="fragment">Fast! </li>
-            <li class="fragment">Distributed!</li>
-            <li class="fragment">Mind-bogglingly scalable!</li>
-            <li class="fragment">Local!</li>
-            <li class="fragment">Branches!</li>
+            <li class="fragment">Track Changes!</li>
+            <li class="fragment">Undo Mistakes!</li>
+            <li class="fragment">Work Offline!</li>
+            <li class="fragment">Collaborate On Code!</li>
           </ul>
         </section>
         <section>
@@ -175,7 +172,7 @@ ResumeREALLYREALLYNEW.docx
           <p> Here are some of the most basic ones. </p>
           <ul>
             <li class="fragment"><span class="green">repository</span> - all the files you want to track.</li>
-            <li class="fragment"> <span class="green">branch</span> - separate line of development, with its own history.</li>
+            <li class="fragment"> <span class="green">branch</span> - separate line of dev, with own history.</li>
             <li class="fragment"><span class="green">commit</span> - holds information about a single change. </li>
             <li class="fragment"><span class="green">HEAD</span> - most recent commit on current branch.</li>
           </ul>
@@ -227,8 +224,8 @@ $ git config --list
             </code></pre>
           <p>Create a "working directory"</p>
           <pre><code contenteditable class ="command-line">
-  mkdir my-first-repo
-  cd my-first-repo
+  mkdir first-repo
+  cd first-repo
             </code></pre>
           <p>Initialize repository with Git</p>
           <pre><code contenteditable class ="command-line">
@@ -237,31 +234,99 @@ $ git config --list
             </code></pre>
         </section>
         <section>
-          <h3>Add files</h3>
-          <p>Create hello_world.txt in my-first-repo folder</p>
-          <p>Check repo status</p>
-          <pre><code contenteditable class ="command-line">
+          <h3>git status</h3>
+          <pre><code>On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+
+</code></pre>
+        </section>
+        <section>
+          <h3>Add Files</h3>
+          <p class="fragment" data-fragment-index="0">Create hello_world.txt in first-repo</p>
+          <p class="fragment" data-fragment-index="1">Check repo status</p>
+          <pre class="fragment" data-fragment-index="1"><code contenteditable class ="command-line">
   git status
             </code></pre>
-          <p>Tell Git to track our new file</p>
+          <pre class="fragment" data-fragment-index="2"><code>On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+
+        hello_world.txt
+
+nothing added to commit but untracked files present 
+    (use "git add" to track)
+    </code></pre>
+        </section>
+        <section>
+          <h3>Add Files</h3>
           <pre><code contenteditable class ="command-line">
   git add hello_world.txt
   git status
             </code></pre>
-          <p>File is now tracked by Git</p>
+          <pre class="fragment"><code>On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+
+        new file:   hello_world.txt
+        </code></pre>
+          <p class="fragment">File is now tracked by Git</p>
         </section>
         <section>
           <h3>Changes and commits</h3>
           <p>Open hello_world.txt and add some more text</p>
-          <pre><code contenteditable class ="command-line">
+          <pre class="fragment"><code contenteditable class ="command-line">
   git status
             </code></pre>
-          <p>Stage and commit the change</p>
+          <pre class="fragment"><code>On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+
+        new file:   hello_world.txt
+
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+
+        modified:   hello_world.txt
+</code></pre>
+        </section>
+        <section>
+
+          <h3>Stage and commit the change</h3>
           <pre><code contenteditable class ="command-line">
   git add hello_world.txt
   git commit -m "First commit. Added hello world to repository."
+  </code></pre>
+          <pre class="fragment"><code>
+[master (root-commit) d1be922] First commit. Added hello world to
+             repository.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello_world.txt
+
+</code></pre>
+        </section>
+        <section>
+          <h3>Check Status</h3>
+          <pre><code>
   git status
             </code></pre>
+          <pre class="fragment"><code>
+On branch master
+nothing to commit, working tree clean
+
+</code></pre>
         </section>
         <!-- Explanation-->
 
@@ -311,7 +376,6 @@ git log -–oneline –-graph -–decorate
         <section>
           <h3>Nobody's Perfect</h3>
           <h4>Undoing local changes</h4>
-          <p>If you haven't committed yet</p>
           <div class="fragment">
             <p>Open hello_world.txt and add some new text</p>
             <pre><code contenteditable class ="command-line">
@@ -334,16 +398,6 @@ git checkout hello_world.txt
           </div>
           <p class="fragment">Look at hello_world.txt. Your changes are gone.</p>
         </section>
-        <section>
-          <h3>Nobody's Perfect</h3>
-          <h4>Remove a file from staging</h4>
-          <p>Create new file my_new_file.txt</p>
-          <pre><code contenteditable class ="command-line">
-git add my_new_file.txt
-git reset my_new_file.txt
-              </code></pre>
-        </section>
-
         <section>
           <h3>Nobody's Perfect</h3>
           <h4>Undoing committed changes</h4>
@@ -371,6 +425,20 @@ git rm my_other_file.txt
             </code></pre>
         </section>
       </section>
+      <section>
+        <h3>Ignoring Files</h3>
+        <p><a href="https://help.github.com/articles/ignoring-files/">.gitignore</a></p>
+        <pre><code># Single File
+config/local.js
+
+# Directory
+node_modules
+bower_components
+
+# Wildcard
+*.log</code></pre>
+      </section>
+
       <!-- Branches-->
       <section>
         <section>
@@ -382,55 +450,61 @@ git rm my_other_file.txt
 
         </section>
         <section>
-          <h3>Branching</h3>
-          <p>Create a new branch called version2</p>
+          <h3>Create Branch</h3>
+          <p>Create a new branch and check it out</p>
           <pre><code contenteditable class ="command-line">
 git checkout -b version2
             </code></pre>
-          <p>Add new lines to hello_world.txt</p>
-          <pre><code contenteditable class ="command-line">
+          <p class="fragment" data-fragment-index="0">Add new lines to hello_world.txt</p>
+          <pre class="fragment" data-fragment-index="0"><code contenteditable class ="command-line">
 git add hello_world.txt
 git commit -m "Adding changes to version 2"
             </code></pre>
         </section>
         <section>
-          <h3>Branching</h3>
-          <h4>Switching branches</h4>
-          <p>See all branches. Branch with * is active</p>
+          <h3>List Branches</h3>
+
           <pre><code contenteditable class ="command-line">
 git branch
             </code></pre>
-          <p>Switch to master and look at hello_world.txt</p>
+
+          <pre class="fragment"><code>
+master
+* version2
+              </code></pre>
+          <p class="fragment">The * is the active branch</p>
+        </section>
+        <section>
+          <h3>Switching Branching</h3>
+
           <pre><code contenteditable class ="command-line">
 git checkout master
             </code></pre>
-          <p>Switch to version2 and look at hello_world.txt</p>
-          <pre><code contenteditable class ="command-line">
-git checkout version2
-            </code></pre>
+          <pre class="fragment"><code>
+Switched to branch 'master'
+
+</code></pre>
         </section>
       </section>
       <!-- Merging-->
       <section>
         <section>
           <h3>Merging</h3>
-          <h4>Merge to get changes from one branch into another</h4>
-          <p>Switch to master and merge changes</p>
+          <h4>Getting changes from one branch into another</h4>
           <pre><code contenteditable class ="command-line">
 git checkout master
 git merge version2
             </code></pre>
         </section>
         <section>
-          <h3>Merging</h3>
-          <h4>Merge conflicts</h4>
-          <p>Change first line in hello_world.txt in master branch</p>
-          <pre><code contenteditable class ="command-line">
+          <h3>Merge Conflicts</h3>
+          <p class="fragment" data-fragment-index="0">Change first line in hello_world.txt in master branch</p>
+          <pre class="fragment" data-fragment-index="0"><code contenteditable class ="command-line">
 git add hello_world.txt
 git commit -m "Changing first line in master"
             </code></pre>
-          <p>Change first line in hello_world.txt in version2 branch</p>
-          <pre><code contenteditable class ="command-line">
+          <p class="fragment" data-fragment-index="1">Change first line in hello_world.txt in version2 branch</p>
+          <pre class="fragment" data-fragment-index="1"><code contenteditable class ="command-line">
 git checkout version2
 # open hello_world.txt and change first line
 git add hello_world.txt
@@ -438,28 +512,65 @@ git commit -m "Changing first line in version2"
             </code></pre>
         </section>
         <section>
-          <h3>Merging</h3>
-          <h4>Merge conflicts, cont.</h4>
+          <h3>Merge Conflicts Continued</h3>
           <p>Merge from master into version2</p>
           <pre><code contenteditable class ="command-line">
 git merge master
             </code></pre>
-          <p class="fragment">You will be notified of a conflict. Go to the file and fix the problem. Then commit your edits.</p>
+          <pre class="fragment"><code>
+Auto-merging hello_world.txt
+CONFLICT (content): Merge conflict in hello_world.txt
+Automatic merge failed; fix conflicts and then commit the result.
 
+</code></pre>
         </section>
         <section>
-          <h3>What Does Merge Conflict Look Like?</h3>
-          <pre><code contenteditable class="command-line">
-git status
-SHOW COMMAND LINE HERE
-            </code></pre>
+          <h3>What Does Merge Conflict Git Status Look Like?</h3>
+          <pre><code>
+On branch version2
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add &lt;file&gt;..." to mark resolution)
+
+        both modified:   hello_world.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+</code></pre>
         </section>
 
         <section>
-          <h3>What Does Merge Conflict Look Like?</h3>
+          <h3>What Does Merge Conflict In File Look Like?</h3>
           <pre><code contenteditable class="command-line">
-ADD FILE MERGE CONFLICT CODE HERE            
+<<<<<<< HEAD
+hello world version 2
+=======
+hello world master changes
+>>>>>>> master
+
             </code></pre>
+        </section>
+        <section>
+          <h3>Fixing Merge</h3>
+
+          <p>Open file and decide what to keep</p>
+          <pre class="fragment"><code>
+git add hello_world.txt
+
+</code></pre>
+          <pre class="fragment"><code>
+git commit -m "merged master"
+
+</code></pre>
+          <pre class="fragment"><code>
+[version2 473bce3] Merge branch 'master' into version2
+  </code></pre>
+        </section>
+        <section>
+          <h2>Questions Before "Gitting" Social</h2>
         </section>
       </section>
       <!-- GitHub-->
@@ -477,9 +588,9 @@ ADD FILE MERGE CONFLICT CODE HERE
           <h3>What is GitHub for?</h3>
           <ul>
             <li class="fragment"><span class="green">Host Git repositories</span> publicly and privately</li>
-            <li class="fragment"><span class="green">Open source projects</span> to host or mirror their repositories</li>
+            <li class="fragment"><span class="green">Open source projects</span> to host their repositories</li>
             <li class="fragment"><span class="green">Publish your code </span>for others to use or contribute to</li>
-            <li class="fragment">Read, copy, and <span class="green">learn</span> from other people's repositories</li>
+            <li class="fragment"><span class="green">Read, copy, and learn</span> from other's repositories</li>
             <li class="fragment"><span class="green">Contribute to open source projects</span></li>
           </ul>
         </section>
@@ -499,9 +610,8 @@ ADD FILE MERGE CONFLICT CODE HERE
           />
         </section>
         <section>
-          <h4>Set up remote repo to sync with your local repo</h4>
-          <p> After you click the big green button to create your repo, follow GitHub's instructions for next steps. </p>
-
+          <h3>Local Repository to Remote</h3>
+<p>In First-Repo Folder</p>
           <pre><code class ="command-line">
 $ git remote add origin https://github.com/GITHUB-USERNAME/REPO.git
 $ git push -u origin master
@@ -514,17 +624,17 @@ $ git push -u origin master
 
 
         <section>
-          <h4>ReadME</h4>
+          <h3>Repository Readme</h3>
           <ul>
-            <li class="fragment">Not required but highly suggested</li>
-            <li class="fragment">Used to describe your project</li>
-            <li class="fragment">Give info on how to install or use your project</li>
-            <li class="fragment">Can include contact Info</li>
+            <li class="fragment">Not forcibly required but highly suggested</li>
+            <li class="fragment">Describe your project and how to use</li>
+            <li class="fragment">Describe how to install</li>
+            <li class="fragment">Describe how to contribute to project</li>
           </ul>
         </section>
         <section>
-          <h3>GitHub</h3>
-          <h4>Get Local Repository of GitHub Repo</h4>
+          <h3>Get Local Copy of GitHub Repo</h3>
+          <h4>i.e. cloning</h4>
           <pre><code contenteditable class ="command-line">
 cd ../ # Back in root directory
 git clone https://github.com/username/NAME-OF-REPO.git
@@ -532,33 +642,35 @@ cd NAME-OF-REPO/
             </code></pre>
         </section>
         <section>
-          <h4>Push to GitHub Repo</h4>
+          <h4>Sending Changes to GitHub</h4>
           <p>Edit the ReadMe file
             <pre><code contenteditable class ="command-line">
-git status
 git add README.md
 git status
 git commit -m "Updating readme file"
 git status
-git push origin master or git push
+git push
 git status
             </code></pre>
             <p class="fragment">Go look at your github repo online</p>
         </section>
         <section>
 
-          <h3>Pulling from remote repository</h3>
-          <p>When working with a team, make sure you have everyone's changes before pushing your changes to GitHub</p>
+          <h3>Get Changes from Github</h3>
           <pre><code contenteditable class ="command-line">
 # Commit local changes
 git commit -m "My latest commit"
+
 # Pull changes other people have made
-git pull origin master
+git pull
+
 # Fix any conflicts (see merge conflicts above) and commit
 git commit -m "Fixing merging conflicts"
+
 # push local changes to GitHub
-git push origin master
+git push
             </code></pre>
+          <p class="fragment red">Make sure you have latest changes before pushing</p>
         </section>
 
         <!-- Fork a repository-->
@@ -571,30 +683,25 @@ git push origin master
 
         <section>
           <h3><a href="https://help.github.com/articles/fork-a-repo/">Forking</a></h3>
-          <p>If you want to <span class="green">use</span> or <span class="green">contribute</span> to a repository, you can
-            fork it. A fork is just a copy of a repository, saved to GitHub.</p>
+          <p><span class="green">Use</span> or <span class="green">Contribute</span> to a repository.</p>
+          <p>Fork is just a copy of a repository, saved to GitHub.</p>
           <a href="https://github.com/amygori/tiny-repo"> Let's practice forking! </a>
           <img src="images/fork_button.jpg" alt="How to fork a repository. Image from https://help.github.com/articles/fork-a-repo/"
           />
         </section>
         <section>
-          <h3>Cloning</h3>
-          <p>Get local copy of the fork you just made, use the <span class="green">git clone</span> command.</p>
+          <h3>Get Local Copy of the Fork</h3>
           <pre><code class ="command-line">
 $ cd ../
 
 $ git clone https://github.com/YOUR-GITHUB-USERNAME/tiny-repo.git
 
 $ cd tiny-repo
-$ git remote -v             </code></pre>
+
+</code></pre>
         </section>
         <section>
-          <h3>Wait...what?</h3>
-          <div class="fragment">
-            There are now THREE copies of this repo that you have access to.
-          </div>
-          <img src="images/three_kittens.jpg" class="fragment">
-          <br>
+          <h3>There are 3 Copies of this Repo</h3>
           <div class="fragment">
             the original (on Github) => <span class="green">upstream</span>
           </div>
@@ -602,14 +709,14 @@ $ git remote -v             </code></pre>
             your fork (on GitHub) => <span class="green">origin</span>
           </div>
           <div class="fragment">
-            your clone => <span class="green">your local repo</span>, just like you're used to
+            your clone => <span class="green">your local repo</span>
           </div>
         </section>
         <section>
           <h3>Syncing</h3>
           <p>sync your local repository to the original repository
             <pre><code contenteditable class ="command-line">
-git remote add upstream https://github.com/original-username/REPO-NAME.git
+git remote add upstream https://github.com/original-user/REPO-NAME.git
 
 git fetch upstream
 
@@ -618,41 +725,13 @@ git merge upstream/master
 git push
             </code></pre>
         </section>
-        <section>
-          <h3>Shared Repos</h3>
-          <p>If team members are contributing to a single repo, each member of the team will want to make sure that she has
-            everyone else's changes before pushing her own changes to the GitHub repo.</p>
-          <div class="fragment">
-            <h4 class="green">Always pull before you push!</h4>
-          </div>
-        </section>
-
-        <section>
-          <h3>Pulling</h3>
-          Commit local changes first
-          <pre><code class ="command-line">
-$ git commit -m "My latest commit"
-              </code></pre> Get changes that have been pushed to the remote repo
-          <pre><code class ="command-line">
-$ git pull origin master
-              </code></pre> Git may prompt you to fix any conflicts, then commit
-          <pre><code class ="command-line">
-$ git commit -m "Fixing merging conflicts"
-              </code></pre> Now you are ready to push local changes to GitHub
-          <pre><code class ="command-line">
-$ git push origin master
-              </code></pre>
-        </section>
+       
 
         <!-- Pull requests-->
 
         <section>
-          <h3>Pull Requests</h3>
-          <ul>
-            <li class="fragment">After you fork and clone a repository all pushed changes will go to your fork</li>
-            <li class="fragment">These changes will not affect the original repository</li>
-            <li class="fragment">If you would like to get your changes to be incorporated into the original repo, you can submit a pull request</li>
-          </ul>
+            <h3>Get Changes Into Original Repo</h3>
+          <h4>i.e. Pull Request (PR)</h4>
         </section>
         <section>
           <h3>Starting a pull request</h3>
@@ -666,9 +745,9 @@ $ git push origin master
         </section>
         <section>
           <h3>Managing pull requests</h3>
-          <p>If you are the owner of repo, you will review and decide whether to merge in the pull requests you receive.</p><br>
+          <p>If you are the owner of repo, you will review and decide whether to merge in the pull requests.</p><br>
 
-          <p>You can learn more from the <br><a href="https://help.github.com/categories/collaborating/" target="_blank" alt="Links to information on GitHub about pull requests and collaboration">Github Collaborating Tutorials.</a>            </p>
+          <p>Learn more about contributing at <br><a href="https://help.github.com/categories/collaborating/" target="_blank" alt="Links to information on GitHub about pull requests and collaboration">Github Collaborating Tutorials.</a>            </p>
         </section>
       </section>
       <!-- -->
